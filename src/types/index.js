@@ -1,0 +1,3 @@
+export const OBTENER_ANIMES = 'OBTENER_ANIMES';
+export const SET_IS_FINISHED = 'SET_IS_FINISHED';
+export const SEARCH_ANIME = 'SEARCH_ANIME';
