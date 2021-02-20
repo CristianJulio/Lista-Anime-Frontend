@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import animeContext from '../context/anime/animeContext';
 import Styled from '@emotion/styled';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'

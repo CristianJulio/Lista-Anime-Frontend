@@ -1,11 +1,12 @@
 import { useReducer } from 'react';
 import AnimeContext from './animeContext';
 import animeReducer from './animeReducer';
-import { GET_ANIMES, CLEAN_GET_ANIMES, SET_IS_FINISHED, SEARCH_ANIME, CLEAN_ANIME_SEARCH } from '../../types';
+import { GET_ANIMES, CLEAN_GET_ANIMES, SET_IS_FINISHED, SEARCH_ANIME, CLEAN_ANIME_SEARCH, GET_ANIME_INFO, CLEAN_ANIME_INFO } from '../../types';
 
 const AnimeState = ({ children }) => {
   const estado = {
     animes: [],
+    currentAnime: {},
     busqueda: [],
     lastPage: 0,
     isFinished: false,
@@ -64,6 +65,37 @@ const AnimeState = ({ children }) => {
     })
   }
 
+  const getAnimeInfo = async (id) => {
+    setIsFinished(false);
+    
+    try {
+      // const response = await fetch(`https://api.jikan.moe/v3/anime/${id}`);
+      // const data = await response.json();
+      const response = await Promise.all([
+        fetch(`https://api.jikan.moe/v3/anime/${id}`),
+        fetch(`https://api.jikan.moe/v3/anime/${id}/characters_staff`)
+      ]);
+
+      const data = await Promise.all(response.map(r => r.json()));
+
+      dispatch({
+        type: GET_ANIME_INFO,
+        payload: {...data[0], ...data[1]}
+      })
+
+      setIsFinished(true);
+      
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const cleanAnimeInfo = () => {
+    dispatch({
+      type: CLEAN_ANIME_INFO
+    })
+  }
+
   const setIsFinished = (estado) => {
     dispatch({
       type: SET_IS_FINISHED,
@@ -75,13 +107,16 @@ const AnimeState = ({ children }) => {
     <AnimeContext.Provider
       value={{
         animes: state.animes,
+        currentAnime: state.currentAnime,
         busqueda: state.busqueda,
         lastPage: state.lastPage,
         isFinished: state.isFinished,
         getAnimes,
         cleanGetAnimes,
         searchAnime,
-        cleanAnimeSearch
+        cleanAnimeSearch,
+        getAnimeInfo,
+        cleanAnimeInfo
       }}
     >
       { children }

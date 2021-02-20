@@ -1,4 +1,4 @@
-import { GET_ANIMES, CLEAN_GET_ANIMES, SET_IS_FINISHED, SEARCH_ANIME, CLEAN_ANIME_SEARCH } from '../../types';
+import { GET_ANIMES, CLEAN_GET_ANIMES, SET_IS_FINISHED, SEARCH_ANIME, CLEAN_ANIME_SEARCH, GET_ANIME_INFO, CLEAN_ANIME_INFO } from '../../types';
 
 // eslint-disable-next-line
 export default (state, action) => {
@@ -23,6 +23,16 @@ export default (state, action) => {
       return {
         ...state,
         animes: []
+      }
+    case GET_ANIME_INFO:
+      return {
+        ...state,
+        currentAnime: action.payload
+      }
+    case CLEAN_ANIME_INFO:
+      return {
+        ...state,
+        currentAnime: []
       }
     case SET_IS_FINISHED:
       return {

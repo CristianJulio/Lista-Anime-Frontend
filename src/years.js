@@ -27,7 +27,7 @@ export const generatePagination = (page, lastPage) => {
       });
     }
   }
-  console.log(pages);
+  
   return pages;
 
   /* Esta función se encargar de generar los items que estarán en la paginación

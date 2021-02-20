@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Header from './Header';
 import animeContext from '../context/anime/animeContext';
 import AnimeList from './AnimeList';

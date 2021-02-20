@@ -1,5 +1,6 @@
 import React from 'react';
 import Styled from '@emotion/styled';
+import { Link } from 'react-router-dom';
 
 const TarjetaStyled = Styled.div`
   width: 185px;
@@ -23,10 +24,12 @@ const TarjetaStyled = Styled.div`
 
 const AnimeCard = ({ anime }) => {
   return (
-    <TarjetaStyled>
-      <img src={anime.image_url} alt=""/>
-      <p>{anime.title}</p>
-    </TarjetaStyled>
+    <Link to={`/anime/${anime.mal_id}/${anime.title.split(' ').join('-')}`}>
+      <TarjetaStyled>
+        <img src={anime.image_url} alt=""/>
+        <p>{anime.title}</p>
+      </TarjetaStyled>
+    </Link>
   );
 }
  
