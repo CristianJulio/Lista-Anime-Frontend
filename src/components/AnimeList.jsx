@@ -13,6 +13,10 @@ const AnimeListStyled = Styled.div`
     grid-gap: 25px;
     width: 1200px;
     margin: 0 auto;
+
+    a {
+      text-decoration: none;
+    }
   }
 `;
 

@@ -4,7 +4,7 @@ import Buscador from './Buscador';
 import { Link } from 'react-router-dom';
 
 const HeaderStyled = Styled.header`
-  background: #113661;
+  background: #2b2d42;
   padding: 15px 30px;
   margin-bottom: 50px;
 

@@ -1,7 +1,15 @@
-import { useReducer } from 'react';
-import AnimeContext from './animeContext';
-import animeReducer from './animeReducer';
-import { GET_ANIMES, CLEAN_GET_ANIMES, SET_IS_FINISHED, SEARCH_ANIME, CLEAN_ANIME_SEARCH, GET_ANIME_INFO, CLEAN_ANIME_INFO } from '../../types';
+import { useReducer } from "react";
+import AnimeContext from "./animeContext";
+import animeReducer from "./animeReducer";
+import {
+  GET_ANIMES,
+  CLEAN_GET_ANIMES,
+  SET_IS_FINISHED,
+  SEARCH_ANIME,
+  CLEAN_ANIME_SEARCH,
+  GET_ANIME_INFO,
+  CLEAN_ANIME_INFO
+} from "../../types";
 
 const AnimeState = ({ children }) => {
   const estado = {
@@ -10,64 +18,66 @@ const AnimeState = ({ children }) => {
     busqueda: [],
     lastPage: 0,
     isFinished: false,
-    cambio: false
-  }
+    cambio: false,
+  };
 
   const [state, dispatch] = useReducer(animeReducer, estado);
 
   const getAnimes = async ({ season, year }) => {
     setIsFinished(false);
-    
+
     try {
-      const response = await fetch(`https://api.jikan.moe/v3/season/${year}/${season}`);
+      const response = await fetch(
+        `https://api.jikan.moe/v3/season/${year}/${season}`
+      );
       const data = await response.json();
 
       dispatch({
         type: GET_ANIMES,
-        payload: data.anime
+        payload: data.anime,
       });
 
       setIsFinished(true);
-      
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   const cleanGetAnimes = () => {
     dispatch({
-      type: CLEAN_GET_ANIMES
-    })
-  }
+      type: CLEAN_GET_ANIMES,
+    });
+  };
 
   const searchAnime = async (search, page = 1) => {
     setIsFinished(false);
-    
+
     try {
-      const response = await fetch(`https://api.jikan.moe/v3/search/anime?q=${search}&page=${page}`);
+      const response = await fetch(
+        `https://api.jikan.moe/v3/search/anime?q=${search}&page=${page}`
+      );
       const data = await response.json();
 
       dispatch({
         type: SEARCH_ANIME,
-        payload: data
+        payload: data,
       });
 
       setIsFinished(true);
-      
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   const cleanAnimeSearch = () => {
     dispatch({
       type: CLEAN_ANIME_SEARCH,
-    })
-  }
+    });
+  };
 
   const getAnimeInfo = async (id) => {
     setIsFinished(false);
-    
+
     try {
       // const response = await fetch(`https://api.jikan.moe/v3/anime/${id}`);
       // const data = await response.json();
@@ -81,27 +91,26 @@ const AnimeState = ({ children }) => {
       dispatch({
         type: GET_ANIME_INFO,
         payload: {...data[0], ...data[1]}
-      })
+      });
 
       setIsFinished(true);
-      
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   const cleanAnimeInfo = () => {
     dispatch({
-      type: CLEAN_ANIME_INFO
-    })
-  }
+      type: CLEAN_ANIME_INFO,
+    });
+  };
 
   const setIsFinished = (estado) => {
     dispatch({
       type: SET_IS_FINISHED,
-      payload: estado
-    })
-  }
+      payload: estado,
+    });
+  };
 
   return (
     <AnimeContext.Provider
@@ -119,9 +128,9 @@ const AnimeState = ({ children }) => {
         cleanAnimeInfo
       }}
     >
-      { children }
+      {children}
     </AnimeContext.Provider>
   );
-}
+};
 
 export default AnimeState;

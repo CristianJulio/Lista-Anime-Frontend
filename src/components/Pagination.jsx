@@ -32,10 +32,12 @@ const PaginationStyled = Styled.div`
       padding: 10px 15px;
       border: 1px solid #ECECEC;
       border-radius: 4px;
+      background: #FFF;
     }
 
     button {
       margin-right: 10px;
+      background: #FFF;
       padding: 12px 15px;
       box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
       border: 1px solid #ECECEC;

@@ -35,8 +35,8 @@ const AnimeFilterStyled = Styled.form`
     }
 
     button {
-      background: #113661;
-      border: 1px solid #113661;
+      background: #2b2d42;
+      border: 1px solid #2b2d42;
       border-radius: 6px;
       color: #FFF;
       width: 100px;
