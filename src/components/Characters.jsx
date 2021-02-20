@@ -94,49 +94,30 @@ const Characters = () => {
   return (
     <CharactersStyled>
       <h2>Characters</h2>
-      <div className="characters">
-        {data.map(d => (
-          <div className="item">
-            <div className="character">
-              <img src={d.chara.image_url} alt=""/>
-              <div className="text">
-                <p>{d.chara.name}</p>
-                <p>{d.chara.role}</p>
+      {currentAnime.characters ? (
+        currentAnime.characters.length !== 0 ? (
+          <div className="characters">
+            {data.map((d) => (
+              <div className="item">
+                <div className="character">
+                  <img src={d.chara.image_url} alt="" />
+                  <div className="text">
+                    <p>{d.chara.name}</p>
+                    <p>{d.chara.role}</p>
+                  </div>
+                </div>
+                <div className="voice_actor">
+                  <div className="text">
+                    <p>{d.chara.voice_actors[0].name}</p>
+                    <p>{d.chara.voice_actors[0].language}</p>
+                  </div>
+                  <img src={d.chara.voice_actors[0].image_url} alt="" />
+                </div>
               </div>
-            </div>
-            <div className="voice_actor">
-              <div className="text">
-                <p>{d.chara.voice_actors[0].name}</p>
-                <p>{d.chara.voice_actors[0].language}</p>
-              </div>
-              <img src={d.chara.voice_actors[0].image_url} alt=""/>
-            </div>
+            ))}
           </div>
-        ))}
-      </div>
-      {/* <div className="characters">
-        {characters.map((c) => (
-          <div key={c.id} className="character_set">
-            <div className="set">
-              <img src={c.chara.image_url} alt="" />
-              <div className="text">
-                <p>{c.chara.name}</p>
-                <p>{c.chara.role}</p>
-              </div>
-            </div>
-            <div className="set">
-              <div className="text">
-                <p>{c.chara.voice_actors[0].name}</p>
-                <p>{c.chara.voice_actors[0].language}</p>
-              </div>
-              <img src={c.chara.voice_actors[0].image_url} alt="" />
-            </div>
-          </div>
-        ))}
-      </div> */}
-      {/* <ul>
-        {characters}
-      </ul> */}
+        ) : "There is no information about the characters"
+      ) : null}
     </CharactersStyled>
   );
 };
