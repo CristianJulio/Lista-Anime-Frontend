@@ -9,21 +9,23 @@ const AnimeFilterStyled = Styled.form`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-bottom: 50px;
 
     select, button {
-      border: 1px solid #113661;
       cursor: pointer;
       font-size: 11pt;
     }
 
     select {
       appearance: none;
-      border-radius: 12px;
+      border-radius: 6px;
       font-size: 11pt;
       margin-right: 25px;
-      padding: 5px 0;
-      text-align: center;
+      padding: 5px 16px;
+      color: #8f9eac;
+      border: 1px solid #f7f7f7;
       width: 150px;
+      box-shadow: 0 0 5px rgba(0,0,0,.1);
       transition: all .3s;
       box-shadow: 15px 15px 15px #ECECEC;
 
@@ -34,7 +36,8 @@ const AnimeFilterStyled = Styled.form`
 
     button {
       background: #113661;
-      border-radius: 15px;
+      border: 1px solid #113661;
+      border-radius: 6px;
       color: #FFF;
       width: 100px;
       transition: all .3s;
@@ -52,19 +55,6 @@ const AnimeFilterStyled = Styled.form`
       }
     }
   }
-
-  div.search {
-    display: flex;
-    justify-content: center;
-    margin-top: 25px;
-
-    input {
-      width: 700px;
-      padding: 10px 20px;
-      border-radius: 15px;
-      border: 2px solid #ECECEC;
-    }
-  }
 `;
 
 const AnimeFilter = () => {
@@ -75,16 +65,16 @@ const AnimeFilter = () => {
     year: "2021",
   });
 
-  const [busqueda, setBusqueda] = useState("");
+  const { season, year } = params;
 
-  const { isFinished, obtenerAnimes, searchAnime } = useContext(AnimeContext);
+  const { isFinished, getAnimes, cleanGetAnimes } = useContext(AnimeContext);
 
   useEffect(() => {
-    obtenerAnimes(params);
+    getAnimes(params);
+
+    return (() => cleanGetAnimes())
     // eslint-disable-next-line
   }, []);
-
-  const { season, year } = params;
 
   const handleChange = (e) => {
     setParams((params) => ({
@@ -96,17 +86,8 @@ const AnimeFilter = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    obtenerAnimes(params);
+    getAnimes(params);
   };
-
-  const handleSearch = async (e) => {
-    e.preventDefault();
-    
-    if(busqueda.length >= 3) 
-      searchAnime(busqueda.toLowerCase());
-    else
-      alert("La búsqueda debe ser mínimo de 3 caracteres");
-  }
 
   return (
     <AnimeFilterStyled onSubmit={handleSubmit}>
@@ -128,11 +109,6 @@ const AnimeFilter = () => {
         </select>
 
         <button disabled={!isFinished}>Buscar</button>
-      </div>
-
-      <div className="search">
-        <input type="text" name="search" onChange={(e) => setBusqueda(e.target.value)} />
-        <button onClick={handleSearch}>Enviar</button>
       </div>
     </AnimeFilterStyled>
   );

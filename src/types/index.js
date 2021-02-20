@@ -1,3 +1,5 @@
-export const OBTENER_ANIMES = 'OBTENER_ANIMES';
+export const GET_ANIMES = 'GET_ANIMES';
+export const CLEAN_GET_ANIMES = 'CLEAN_GET_ANIMES';
 export const SET_IS_FINISHED = 'SET_IS_FINISHED';
 export const SEARCH_ANIME = 'SEARCH_ANIME';
+export const CLEAN_ANIME_SEARCH = 'CLEAN_ANIME_SEARCH';
