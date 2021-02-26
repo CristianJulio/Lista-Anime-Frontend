@@ -11,6 +11,10 @@ const AnimeInfoStyled = Styled.div`
   width: 1200px;
   margin: 0 auto;
 
+  @media screen and (min-width: 1920px) {
+    width: 1520px;
+  }
+
   div.cabecera {
     display: flex;
     justify-content: flex-start;
@@ -62,7 +66,7 @@ const AnimeInfoStyled = Styled.div`
     margin-bottom: 25px;
 
     div.overview {
-      margin-left: 50px;
+      margin-left: 25px;
     }
   }
 `;

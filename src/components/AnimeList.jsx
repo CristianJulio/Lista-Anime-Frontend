@@ -14,6 +14,11 @@ const AnimeListStyled = Styled.div`
     width: 1200px;
     margin: 0 auto;
 
+    @media screen and (min-width: 1920px) {
+        width: 1520px;
+        grid-template-columns: repeat(6, 1fr);
+    }
+
     a {
       text-decoration: none;
     }

@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 import Pagination from './Pagination';
 
 const ResultadosBusqueda = () => {
-  const { busqueda, searchAnime, cleanAnimeSearch } = useContext(animeContext);
+  const { isFinished, busqueda, searchAnime, cleanAnimeSearch } = useContext(animeContext);
   const { nombreAnime, page } = useParams();
   
   useEffect(() => {
@@ -20,7 +20,7 @@ const ResultadosBusqueda = () => {
     <>
       <Header />
       <AnimeList animes={busqueda} />
-      <Pagination />
+      {isFinished ? ( <Pagination /> ) : null}
     </>
   );
 }
