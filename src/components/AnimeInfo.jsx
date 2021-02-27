@@ -5,10 +5,11 @@ import { useParams } from "react-router-dom";
 import Styled from "@emotion/styled";
 import Spinner from "./Spinner";
 import SideBarInfo from "./SideBarInfo";
-import Characters from "./Characters";
+import CharactersStaff from "./Characters_staff";
+import Stats from "./Stats";
 
 const AnimeInfoStyled = Styled.div`
-  width: 1200px;
+  width: 1050px;
   margin: 0 auto;
 
   @media screen and (min-width: 1920px) {
@@ -102,7 +103,8 @@ const AnimeInfo = () => {
             <SideBarInfo />
             
             <div className="overview">
-              <Characters />
+              <CharactersStaff />
+              <Stats />
             </div>
           </div>
         </AnimeInfoStyled>

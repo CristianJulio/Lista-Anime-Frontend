@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import Styled from "@emotion/styled";
 import animeContext from "../context/anime/animeContext";
 
-const CharactersStyled = Styled.div`
+const CharactersStaffStyled = Styled.div`
   h2 {
     font-weight: 500;
     font-size: 0.9rem;
@@ -14,7 +14,7 @@ const CharactersStyled = Styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 15px 25px;
-    width: 950px;
+    width: 800px;
 
     @media screen and (min-width: 1920px) {
       width: 1270px;
@@ -85,7 +85,7 @@ const CharactersStyled = Styled.div`
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       grid-gap: 15px 25px;
-      width: 950px;
+      width: 800px;
 
       @media screen and (min-width: 1920px) {
         width: 1270px;
@@ -128,7 +128,7 @@ const CharactersStyled = Styled.div`
   }
 `;
 
-const Characters = () => {
+const CharactersStaff = () => {
   const { isFinished, currentAnime } = useContext(animeContext);
   let data = [];
 
@@ -149,10 +149,8 @@ const Characters = () => {
     }
   }
 
-  console.log(data);
-
   return (
-    <CharactersStyled>
+    <CharactersStaffStyled>
       <h2>Characters</h2>
 
       {isFinished ? (
@@ -200,7 +198,7 @@ const Characters = () => {
             <h2>Staff</h2>
             <div className="items">
               {data.map((d) => (
-                <div className="item">
+                <div key={d.id} className="item">
                   <img src={d.staff.image_url} alt="" />
                   <div className="text">
                     <p>{d.staff.name}</p>
@@ -212,8 +210,8 @@ const Characters = () => {
           </div>
         </>
       ) : null}
-    </CharactersStyled>
+    </CharactersStaffStyled>
   );
 };
 
-export default Characters;
+export default CharactersStaff;
