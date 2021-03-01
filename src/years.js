@@ -14,17 +14,11 @@ export const generatePagination = (page, lastPage) => {
 
   if((page + 7) <= lastPage) {
     for(let i = page; i <= (page + 7); i++) {
-      pages.push({
-        id: i,
-        li: <li>{i}</li>
-      });
+      pages.push(i);
     }
   } else {
     for(let i = lastPage; i >= (lastPage - 7) && i > 0; i--) {
-      pages.unshift({
-        id: i,
-        li: <li>{i}</li>
-      });
+      pages.unshift(i);
     }
   }
   

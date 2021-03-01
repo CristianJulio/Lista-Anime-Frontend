@@ -3,15 +3,16 @@ import AnimeFilter from './AnimeFilter';
 import Header from './Header';
 import AnimeContext from "../context/anime/animeContext";
 import AnimeList from './AnimeList';
+import Spinner from './Spinner';
 
 const AnimesTemporada = () => {
-  const { animes } = useContext(AnimeContext);
+  const { animes, isFinished } = useContext(AnimeContext);
 
   return (
     <>
       <Header />
       <AnimeFilter />
-      <AnimeList animes={animes} />
+      {isFinished ? <AnimeList animes={animes} /> : <Spinner />}
     </>
   );
 }

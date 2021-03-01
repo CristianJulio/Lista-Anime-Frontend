@@ -1,45 +1,14 @@
-import React, { useContext } from "react";
-import Spinner from "./Spinner";
+import React from "react";
 import AnimeCard from "./AnimeCard";
-import AnimeContext from "../context/anime/animeContext";
-import Styled from "@emotion/styled";
-
-const AnimeListStyled = Styled.div`
-  margin-bottom: 25px;
-
-  div.content {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-gap: 25px;
-    width: 1200px;
-    margin: 0 auto;
-
-    @media screen and (min-width: 1920px) {
-        width: 1520px;
-        grid-template-columns: repeat(6, 1fr);
-    }
-
-    a {
-      text-decoration: none;
-    }
-  }
-`;
+import { StyledAnimeList } from "../styles/AnimeListStyledComp";
 
 const AnimeList = ({ animes }) => {
-  const { isFinished } = useContext(AnimeContext);
-
   return (
-    <AnimeListStyled>
-      {isFinished ? (
-        <div className="content">
-          {animes.map((anime) => (
-            <AnimeCard key={anime.mal_id} anime={anime} />
-          ))}
-        </div>
-      ) : (
-        <Spinner />
-      )}
-    </AnimeListStyled>
+    <StyledAnimeList>
+      {animes.map((anime) => (
+        <AnimeCard key={anime.mal_id} anime={anime} />
+      ))}
+    </StyledAnimeList>
   );
 };
 
