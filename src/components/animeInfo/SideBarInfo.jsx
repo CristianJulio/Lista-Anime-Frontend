@@ -30,6 +30,10 @@ const SideBarInfo = () => {
         <InfoSetContent>{currentAnime.score}</InfoSetContent>
       </InfoSetSidebar>
       <InfoSetSidebar>
+        <TitleInfoSet>Members</TitleInfoSet>
+        <InfoSetContent>{currentAnime.members}</InfoSetContent>
+      </InfoSetSidebar>
+      <InfoSetSidebar>
         <TitleInfoSet>Rating</TitleInfoSet>
         <InfoSetContent>{currentAnime.rating}</InfoSetContent>
       </InfoSetSidebar>

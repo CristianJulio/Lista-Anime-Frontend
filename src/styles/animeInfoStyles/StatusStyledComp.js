@@ -5,13 +5,6 @@ export const TitleStats = styled(NormalTitle)`
   margin-bottom: 10px;
 `;
 
-export const ContentContainerStats = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 25px;
-  width: 950px;
-`;
-
 export const StatusContainer = styled.div`
   background: #FFF;
   border-radius: 4px;

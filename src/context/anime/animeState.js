@@ -89,8 +89,6 @@ const AnimeState = ({ children }) => {
 
       const data = await Promise.all(response.map(r => r.json()));
 
-      console.log(data);
-      
       dispatch({
         type: GET_ANIME_INFO,
         payload: {...data[0], ...data[1], ...data[2]}
