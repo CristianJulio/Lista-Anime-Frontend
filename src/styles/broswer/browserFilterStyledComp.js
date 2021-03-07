@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { SelectFilter, ButtonFilter } from '../temporadas/TemporadasFilterStyledComp';
 
 export const StyledBrowserFilter = styled.form`
@@ -25,6 +25,13 @@ export const InputBrowser = styled.input`
 
 export const SelectBrowser = styled(SelectFilter)`
   text-align: center;
+  box-shadow: 0 0 5px ${({boxShaCol}) => boxShaCol ? boxShaCol : "rgba(0,0,0,.1)"};
+
+  /* ${({boxShaCol}) => boxShaCol === true ? (
+    css`
+     box-shadow: 0 0 5px #d65245; 
+    `  
+  ) : null} */
 `;
 
 export const ButtonBrowser = styled(ButtonFilter)`

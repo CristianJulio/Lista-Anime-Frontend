@@ -3,6 +3,8 @@ import { SelectBrowser, StyledBrowserFilter, InputBrowser, ButtonBrowser } from 
 import { getGenres } from '../../years';
 import animeContext from '../../context/anime/animeContext';
 import { useParams } from 'react-router';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const BrowserFilter = () => {
   const { page } = useParams();
@@ -19,6 +21,7 @@ const BrowserFilter = () => {
     sort: ""
   });
   const { q, type, status, rated, genre, score, order, sort } = params;
+  const [error, setError] = useState(false);
 
   const handleChange = e => {
     setParams(params => ({ ...params, [e.target.name]: e.target.value }));
@@ -27,16 +30,25 @@ const BrowserFilter = () => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    if(q.length < 3 && type === "" && rated === "" && genre === "") return alert("You must select at least the type, rated or genre field and the search field must be at least 3 characters long");
+    if(q === "" && type === "" && rated === "" && genre === "") {
+      setError(true);
+      return toast.warn("You must select at least one of the fields that are in red", { hideProgressBar: true });
+    }
 
+    if(q.length < 3 && type === "" && rated === "" && genre === "") {
+      setError(false);
+      return toast.warn("The search field must have a minimum of 3 characters", { hideProgressBar: true });
+    }
+  
+    setError(false);
     getBrowsedAnimes({...params, page})
   }
-  
+
   return (
     <StyledBrowserFilter onSubmit={handleSubmit}>
       <InputBrowser type="text" name="q" onChange={handleChange} value={q} placeholder="Naruto..." />
       
-      <SelectBrowser name="type" value={type} onChange={handleChange}>
+      <SelectBrowser boxShaCol={error ? "#d65245" : "rgba(0,0,0,.1))"} name="type" value={type} onChange={handleChange}>
         <option value="">Type</option>
         <option value="tv">Tv</option>
         <option value="ova">Ova</option>
@@ -52,7 +64,7 @@ const BrowserFilter = () => {
         <option value="upcoming">Upcoming</option>
       </SelectBrowser>
 
-      <SelectBrowser name="rated" value={rated} onChange={handleChange}>
+      <SelectBrowser boxShaCol={error ? "#d65245" : "rgba(0,0,0,.1))"} name="rated" value={rated} onChange={handleChange}>
       <option value="">Rated</option>
         <option value="g">G</option>
         <option value="pg">PG</option>
@@ -62,7 +74,7 @@ const BrowserFilter = () => {
         <option value="rx">Rx</option>
       </SelectBrowser>
 
-      <SelectBrowser name="genre" value={genre} onChange={handleChange}>
+      <SelectBrowser boxShaCol={error ? "#d65245" : "rgba(0,0,0,.1))"} name="genre" value={genre} onChange={handleChange}>
         <option value="">Genre</option>
         {genres.map(g => <option key={g.id} value={g.id}>{g.name}</option>)}
       </SelectBrowser>
@@ -85,8 +97,8 @@ const BrowserFilter = () => {
         <option value="">Order By</option>
         <option value="title">Title</option>
         <option value="type">Type</option>
-        <option value="sta_dat">Start Date</option>
-        <option value="end_dat">End Date</option>
+        <option value="start_date">Start Date</option>
+        <option value="end_date">End Date</option>
         <option value="score">Score</option>
         <option value="members">Members</option>
         <option value="episodes">Episodes</option>
@@ -100,6 +112,10 @@ const BrowserFilter = () => {
       </SelectBrowser>
 
       <ButtonBrowser>Go</ButtonBrowser>
+
+      <ToastContainer
+        position="top-center"
+      />
     </StyledBrowserFilter>
   );
 }
