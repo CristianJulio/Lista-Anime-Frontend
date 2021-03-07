@@ -28,10 +28,10 @@ const Browser = () => {
       <StyledBrowser>
         <TitleBrowser>Browse</TitleBrowser>
         <BrowserFilter />
-        {browsedAnimes && isFinished === true ? (
+        {isFinished ? (
           <>
             <AnimeList animes={browsedAnimes} />
-            <Pagination baseUrl="/browse/" />
+            {browsedAnimes ? <Pagination baseUrl="/browse/" /> : null}
           </>
         ) : <Spinner />}
       </StyledBrowser>

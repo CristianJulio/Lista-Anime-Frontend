@@ -24,7 +24,7 @@ const ResultadosBusqueda = () => {
       <Header />
 
       <StyledBusqueda>
-        <TitleBusqueda>{`Resultados: "${nombreAnime}"`}</TitleBusqueda>
+        <TitleBusqueda>{`Resultados "${nombreAnime}":`}</TitleBusqueda>
 
         {isFinished ? (
           <>

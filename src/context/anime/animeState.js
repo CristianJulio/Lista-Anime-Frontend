@@ -184,7 +184,7 @@ const AnimeState = ({ children }) => {
     setIsFinished(false);
     
     try {
-      const url = `https://api.jikan.moe/v3/search/anime?q=${q}&page=${page}?order_by=${order}&status=${status}&rated=${rated}&genre=${genre}&sort=${sort}&type=${type}`;
+      const url = `https://api.jikan.moe/v3/search/anime?q=${q}&page=${page}?order_by=${order}&status=${status}&rated=${rated}&genre=${genre}&sort=${sort}&type=${type}&score=${score}`;
       const response = await fetch(url);
       const data = await response.json();
 
@@ -192,12 +192,12 @@ const AnimeState = ({ children }) => {
         type: GET_BROWSED_ANIMES,
         payload: data
       });
-
-      setIsFinished(true);
       
     } catch (error) {
       console.log(error);
     }
+
+    setIsFinished(true);
   }
 
   const cleanBrowsedAnimes = () => {

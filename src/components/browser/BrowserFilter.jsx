@@ -27,7 +27,7 @@ const BrowserFilter = () => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    if(q === "") return alert("El campo de busqueda no puede quedar vacío");
+    if(q.length < 3 && type === "" && rated === "" && genre === "") return alert("You must select at least the type, rated or genre field and the search field must be at least 3 characters long");
 
     getBrowsedAnimes({...params, page})
   }
@@ -69,16 +69,16 @@ const BrowserFilter = () => {
 
       <SelectBrowser name="score" value={score} onChange={handleChange}>
         <option value="">Score</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
+        <option value="1.0">1</option>
+        <option value="2.0">2</option>
+        <option value="3.0">3</option>
+        <option value="4.0">4</option>
+        <option value="5.0">5</option>
+        <option value="6.0">6</option>
+        <option value="7.0">7</option>
+        <option value="8.0">8</option>
+        <option value="9.0">9</option>
+        <option value="10.0">10</option>
       </SelectBrowser>
 
       <SelectBrowser name="order" value={order} onChange={handleChange}>
