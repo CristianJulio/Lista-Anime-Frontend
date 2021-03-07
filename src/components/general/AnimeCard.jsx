@@ -1,5 +1,5 @@
 import React from 'react';
-import { EnlaceAnimeCard, ImgAnimeCard, TitleAnimeCard } from '../styles/AnimeCardStyledComp';
+import { EnlaceAnimeCard, ImgAnimeCard, TitleAnimeCard } from '../../styles/general/AnimeCardStyledComp';
 
 const AnimeCard = ({ anime }) => {
   return (

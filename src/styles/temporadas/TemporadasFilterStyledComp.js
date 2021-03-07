@@ -9,7 +9,7 @@ export const StyledAnimeFilter = styled.form`
 
 export const SelectFilter = styled.select`
   appearance: none;
-  border-radius: 6px;
+  border-radius: 4px;
   font-size: 11pt;
   margin-right: 25px;
   padding: 5px 16px;
@@ -30,7 +30,7 @@ export const SelectFilter = styled.select`
 export const ButtonFilter = styled.button`
   background: #2b2d42;
   border: 1px solid #2b2d42;
-  border-radius: 6px;
+  border-radius: 4px;
   color: #FFF;
   width: 100px;
   transition: all .3s;

@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
-import { generateYears } from "../years";
-import AnimeContext from "../context/anime/animeContext";
-import { StyledAnimeFilter, SelectFilter, ButtonFilter } from '../styles/AnimeFilterStyledComp';
+import { generateYears } from "../../years";
+import AnimeContext from "../../context/anime/animeContext";
+import { StyledAnimeFilter, SelectFilter, ButtonFilter } from '../../styles/temporadas/TemporadasFilterStyledComp';
 
 const AnimeFilter = () => {
   const options = generateYears(); // Esta función sirve para generar los options del select de años
@@ -40,10 +40,10 @@ const AnimeFilter = () => {
         value={season}
         onChange={handleChange}
       >
-        <option value="winter">Invierno</option>
-        <option value="spring">Primavera</option>
-        <option value="summer">Verano</option>
-        <option value="fall">Otoño</option>
+        <option value="winter">Winter</option>
+        <option value="spring">Spring</option>
+        <option value="summer">Summer</option>
+        <option value="fall">Fall</option>
       </SelectFilter>
 
       <SelectFilter 
@@ -55,7 +55,7 @@ const AnimeFilter = () => {
         {options}
       </SelectFilter>
 
-      <ButtonFilter disabled={!isFinished}>Buscar</ButtonFilter>
+      <ButtonFilter disabled={!isFinished}>Go</ButtonFilter>
     </StyledAnimeFilter>
   );
 };

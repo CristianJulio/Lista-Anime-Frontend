@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from "react";
-import Header from "../Header";
+import Header from "../header/Header";
 import animeContext from "../../context/anime/animeContext";
 import { useParams } from "react-router-dom";
-import Spinner from "../Spinner";
+import Spinner from "../general/Spinner";
 import SideBarInfo from "./SideBarInfo";
 import Stats from "./Stats";
 import Cabecera from "./Cabecera";

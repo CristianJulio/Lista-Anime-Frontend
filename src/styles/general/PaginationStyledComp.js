@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Enlace } from '../globalStyle';
+import { Enlace } from '../../globalStyle';
 
 export const StyledPagination = styled.div`
   width: 600px;

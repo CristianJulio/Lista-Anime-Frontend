@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Enlace } from '../globalStyle';
+import { Enlace } from '../../globalStyle';
 
 export const StyledHeader = styled.header`
   background: #2b2d42;
@@ -11,7 +11,6 @@ export const StyledHeader = styled.header`
 `;
 
 export const Title = styled.h1`
-  color: #FFF;
   text-align: center;
   font-family: 'Lobster', cursive;
   transform: rotateZ(-5deg);

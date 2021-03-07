@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Enlace } from '../globalStyle';
+import { Enlace } from '../../globalStyle';
 
 export const EnlaceAnimeCard = styled(Enlace)`
   width: 185px;
@@ -18,5 +18,4 @@ export const TitleAnimeCard = styled.p`
   font-weight: 600;
   font-size: 1rem;
   line-height: 21px;
-  margin-top: 10px;
 `;

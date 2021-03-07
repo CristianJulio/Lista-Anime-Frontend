@@ -30,4 +30,11 @@ export const NormalTitle = styled.h2`
   color: rgb(92,114,138);
 `;
 
+export const middleTitle = styled.h2`
+  color: rgb(81,97,112);
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: .03rem;
+`;
+
 export default GlobalStyle;

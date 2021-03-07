@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { GrSearch } from 'react-icons/gr';
 import { useHistory } from 'react-router-dom';
-import { StyledBuscador, InputBuscador, ButtonBuscador } from '../styles/BuscadorStyledComp';
+import { StyledBuscador, InputBuscador, ButtonBuscador } from '../../styles/header/BuscadorStyledComp';
 
 const Buscador = () => {
   const [busqueda, setBusqueda] = useState("");
@@ -21,7 +21,7 @@ const Buscador = () => {
   
   return (
     <StyledBuscador onSubmit={handleSubmit}>
-      <InputBuscador type="text" placeholder="Buscar..." onChange={handleChange} />
+      <InputBuscador type="text" placeholder="Search..." onChange={handleChange} />
       <ButtonBuscador><GrSearch /></ButtonBuscador>
     </StyledBuscador>
   );
