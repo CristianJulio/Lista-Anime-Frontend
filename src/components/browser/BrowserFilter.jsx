@@ -114,7 +114,7 @@ const BrowserFilter = () => {
       <ButtonBrowser>Go</ButtonBrowser>
 
       <ToastContainer
-        position="top-center"
+        position="top-left"
       />
     </StyledBrowserFilter>
   );

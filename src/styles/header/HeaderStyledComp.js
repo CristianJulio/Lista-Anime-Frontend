@@ -1,12 +1,15 @@
 import styled from 'styled-components';
-import { Enlace } from '../../globalStyle';
+import { Container, Enlace } from '../../globalStyle';
 
 export const StyledHeader = styled.header`
   background: #2b2d42;
   padding: 15px 30px;
   margin-bottom: 50px;
+`;
+
+export const HeaderContainer = styled(Container)`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 `;
 
@@ -24,4 +27,11 @@ export const Title = styled.h1`
 
 export const HeaderEnlace = styled(Enlace)`
   color: #FFF;
+`;
+
+export const ButtonsContainer = styled.div`
+  width: 250px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;

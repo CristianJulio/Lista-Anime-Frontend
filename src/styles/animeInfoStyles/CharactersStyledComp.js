@@ -11,9 +11,17 @@ export const TitleCharacters = styled(NormalTitle)`
 
 export const ItemsContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
   grid-gap: 10px 25px;
-  width: 950px;
+
+  @media screen and (min-width: 1200px) {
+    width: 950px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (min-width: 1920px) {
+    width: 1150px;
+    grid-template-columns: repeat(3, 1fr);
+  }
 `;
 
 export const InnerItemContainer = styled.div`

@@ -8,7 +8,10 @@ const Score = () => {
 
   for(let item in currentAnime.scores) {
     let sc = currentAnime.scores[item];
-    scores.push(sc);
+    scores.push({
+      id: item,
+      sc
+    });
   }
 
   return (
@@ -17,9 +20,9 @@ const Score = () => {
 
       <ScoreContainer>
         {scores.map((s, i) => (
-          <Item key={s.votes}>
-            <ItemText col="rgb(92,114,138)" fonSiz="0.8rem">{s.votes}</ItemText>
-            <BarItem hgt={`${s.percentage * 2.5}%`}></BarItem>
+          <Item key={s.id}>
+            <ItemText col="rgb(92,114,138)" fonSiz="0.8rem">{s.sc.votes}</ItemText>
+            <BarItem hgt={`${s.sc.percentage * 2.5}%`}></BarItem>
             <ItemText col="rgba(0,0,0,.4)" fonSiz="0.7rem">{`${i+1}0`}</ItemText>
           </Item>
         ))}

@@ -2,7 +2,7 @@ import React from "react";
 import {
   StaffContainer,
   TitleStaff,
-  ItemsContainer,
+  StaffItemsContainer,
   ItemStaff,
   ImgStaff,
   TextContainerStaff,
@@ -11,20 +11,22 @@ import {
 } from "../../styles/animeInfoStyles/StaffStyledComp";
 
 const Staff = ({ data }) => {
+
+  if(!data) return null;
   return (
     <StaffContainer>
       <TitleStaff>Staff</TitleStaff>
-      <ItemsContainer>
+      <StaffItemsContainer>
         {data.map((d) => (
-          <ItemStaff key={d.id}>
-            <ImgStaff src={d.staff.image_url} alt="" />
+          <ItemStaff key={d.item.name}>
+            <ImgStaff src={d.item.image_url} alt="" />
             <TextContainerStaff>
-              <NameStaffMember>{d.staff.name}</NameStaffMember>
-              <RoleStaffMember>{d.staff.positions[0]}</RoleStaffMember>
+              <NameStaffMember>{d.item.name}</NameStaffMember>
+              <RoleStaffMember>{d.item.positions[0]}</RoleStaffMember>
             </TextContainerStaff>
           </ItemStaff>
         ))}
-      </ItemsContainer>
+      </StaffItemsContainer>
     </StaffContainer>
   );
 };

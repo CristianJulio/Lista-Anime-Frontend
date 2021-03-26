@@ -12,7 +12,6 @@ import {
 } from "../../styles/animeInfoStyles/CharactersStyledComp";
 
 const Characters = ({ data }) => {
-
   return (
     <CharactersContainer>
       <TitleCharacters>Characters</TitleCharacters>
@@ -21,20 +20,20 @@ const Characters = ({ data }) => {
         {data.map((d) => (
           <ItemCharacter key={d.id}>
             <InnerItemContainer>
-              <ImgItem src={d.chara.image_url} alt="" />
+              <ImgItem src={d.item.image_url} alt="" />
               <TextContainerItem>
-                <TitleTexCon>{d.chara.name}</TitleTexCon>
-                <ContentTexCon>{d.chara.role}</ContentTexCon>
+                <TitleTexCon>{d.item.name}</TitleTexCon>
+                <ContentTexCon>{d.item.role}</ContentTexCon>
               </TextContainerItem>
             </InnerItemContainer>
 
-            {d.chara.voice_actors.length !== 0 ? (
+            {d.item.voice_actors.length !== 0 ? (
               <InnerItemContainer JusCon="flex-end">
                 <TextContainerItem texAli="right">
-                  <TitleTexCon>{d.chara.voice_actors[0].name}</TitleTexCon>
-                  <ContentTexCon>{d.chara.voice_actors[0].language}</ContentTexCon>
+                  <TitleTexCon>{d.item.voice_actors[0].name}</TitleTexCon>
+                  <ContentTexCon>{d.item.voice_actors[0].language}</ContentTexCon>
                 </TextContainerItem>
-                <ImgItem src={d.chara.voice_actors[0].image_url} alt="" borRad="0 4px 4px 0" />
+                <ImgItem src={d.item.voice_actors[0].image_url} alt="" borRad="0 4px 4px 0" />
               </InnerItemContainer>
             ) : (
               <InnerItemContainer JusCon="flex-end">

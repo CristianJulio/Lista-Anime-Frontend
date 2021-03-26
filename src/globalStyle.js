@@ -15,9 +15,17 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 export const Container = styled.div`
-  width: 1200px;
-  max-width: 1200px;
   margin: 0 auto;
+
+  @media screen and (min-width: 1200px) {
+    width: 1200px;
+    max-width: 1200px;
+  }
+
+  @media screen and (min-width: 1920px) {
+    width: 1400px;
+    max-width: 1400px;
+  }
 `;
 
 export const Enlace = styled(Link)`

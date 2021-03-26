@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Header from "../header/Header";
 import animeContext from "../../context/anime/animeContext";
 import { useParams } from "react-router-dom";
@@ -9,34 +9,35 @@ import Cabecera from "./Cabecera";
 import { StyledAnimeInfo, ContentContainer } from '../../styles/animeInfoStyles/AnimeInfoStyledComp';
 import Staff from "./Staff";
 import Characters from "./Characters";
+import AnimeStatus from "./AnimeStatus";
+import useCharacterStaff from '../../hooks/useCharacterStaff';
 
 const AnimeInfo = () => {
   const { isFinished, currentAnime, getAnimeInfo, cleanAnimeInfo } = useContext(animeContext);
   const { animeId } = useParams();
+  const [isbigscreen, setIsBigScreen] = useState(false)
 
+  const updateSize = () => {
+    setIsBigScreen(window.innerWidth >= 1920);
+  }
+  
   useEffect(() => {
+    updateSize()
+    window.addEventListener("resize", updateSize);
     getAnimeInfo(animeId);
     return () => cleanAnimeInfo();
     // eslint-disable-next-line
   }, []);
 
-  let data = [];
+  const [getItems] = useCharacterStaff(isbigscreen ? 6 : 4);
 
-  // Extraigo 6 personaje para no tener que mostrarlos a todos
-  if (currentAnime.characters) {
-    for (let i = 0; i < 6; i++) {
-      if (
-        currentAnime.characters[i] === undefined ||
-        currentAnime.staff[i] === undefined
-      )
-        break;
+  let characters, staff;
 
-      data.push({
-        id: i,
-        chara: currentAnime.characters[i],
-        staff: currentAnime.staff[i],
-      });
-    }
+  if(currentAnime.characters) {
+    const [chara, staf] = getItems(currentAnime);
+
+    characters = chara;
+    staff = staf;
   }
 
   return (
@@ -46,13 +47,14 @@ const AnimeInfo = () => {
       {isFinished ? (
         <StyledAnimeInfo>
           <Cabecera />
+          <AnimeStatus />
           <ContentContainer>
             <SideBarInfo />
             <div className="overview">
               {currentAnime.characters && currentAnime.staff ? (
                 <>
-                  {currentAnime.characters.length !== 0 ? ( <Characters data={data} /> ) : null}
-                  {currentAnime.staff.length !== 0 ? ( <Staff data={data} /> ) : null}
+                  {characters.length !== 0 ? ( <Characters data={characters} /> ) : null}
+                  {staff.length !== 0 ? ( <Staff data={staff} /> ) : null}
                 </>
               ) : null}
               <Stats />

@@ -19,7 +19,7 @@ const Buscador = () => {
     if(busqueda.length >= 3) {
       history.push(`/search/${busqueda.split(' ').join('-')}/1`);
     } else {
-      toast.warn("This field must have a minimum of 3 characters");
+      toast.warn("This field must have a minimum of 3 characters", { hideProgressBar: true });
     }
   }
   
@@ -28,7 +28,7 @@ const Buscador = () => {
       <InputBuscador type="text" placeholder="Search..." onChange={handleChange} />
       <ButtonBuscador><GrSearch /></ButtonBuscador>
       <ToastContainer 
-        position="top-center"
+        position="top-left"
       />
     </StyledBuscador>
   );

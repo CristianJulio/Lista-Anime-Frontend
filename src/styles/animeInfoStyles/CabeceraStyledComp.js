@@ -4,7 +4,6 @@ export const StyledCabecera = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin-bottom: 25px;
 `;
 
 export const ImgCabecera = styled.img`

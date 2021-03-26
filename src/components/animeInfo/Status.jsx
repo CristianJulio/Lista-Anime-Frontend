@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import {
   TitleStats,
   StatusContainer,
@@ -8,12 +8,23 @@ import {
   ItemContent,
   ItemInnertext,
   ProgressBarContainer,
-  ProgressBarItem
+  ProgressBarItem,
 } from "../../styles/animeInfoStyles/StatusStyledComp";
 import animeContext from "../../context/anime/animeContext";
 
 const Status = () => {
   const { currentAnime } = useContext(animeContext);
+  const [isbigscreen, setIsBigScreen] = useState(false)
+
+  const updateSize = () => {
+    setIsBigScreen(window.innerWidth >= 1920);
+  }
+
+  useEffect(() => {
+    updateSize();
+    window.addEventListener("resize", updateSize);
+  // eslint-disable-next-line
+  }, []);
 
   const {
     total,
@@ -28,10 +39,10 @@ const Status = () => {
   let ohp = ((100 * on_hold) / total).toFixed(1);
   let pwp = ((100 * plan_to_watch) / total).toFixed(1);
   let dp = ((100 * dropped) / total).toFixed(1);
-  let cp = ((100 * completed) / total).toFixed(1);
+  let comp = ((100 * completed) / total).toFixed(1);
 
-  const gridTemCol = `${wp}% ${dp}% ${ohp}% ${pwp}% ${cp}%`;
-  
+  const gridTemCol = `${wp}% ${dp}% ${ohp}% ${pwp}% ${comp}%`;
+
   return (
     <div>
       <TitleStats>Status Distribution</TitleStats>
@@ -68,6 +79,17 @@ const Status = () => {
               Users
             </ItemContent>
           </Item>
+          {isbigscreen ? (
+            <Item>
+              <ItemTitle bagCol="rgb(232, 93, 117)">Completed</ItemTitle>
+              <ItemContent>
+                <ItemInnertext col="rgb(232, 93, 117)">
+                  {completed}
+                </ItemInnertext>{" "}
+                Users
+              </ItemContent>
+            </Item>
+          ) : null}
         </ItemContainer>
 
         <ProgressBarContainer gridTemCol={gridTemCol}>

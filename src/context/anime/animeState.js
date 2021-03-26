@@ -45,10 +45,11 @@ const AnimeState = ({ children }) => {
         payload: data.anime,
       });
 
-      setIsFinished(true);
     } catch (error) {
       console.log(error);
     }
+
+    setIsFinished(true);
   };
 
   const cleanGetAnimes = () => {
@@ -71,10 +72,11 @@ const AnimeState = ({ children }) => {
         payload: data,
       });
 
-      setIsFinished(true);
     } catch (error) {
       console.log(error);
     }
+
+    setIsFinished(true);
   };
 
   const cleanAnimeSearch = () => {
@@ -102,10 +104,11 @@ const AnimeState = ({ children }) => {
         payload: {...data[0], ...data[1], ...data[2]}
       });
 
-      setIsFinished(true);
     } catch (error) {
       console.log(error);
     }
+
+    setIsFinished(true);
   };
 
   const cleanAnimeInfo = () => {
@@ -125,28 +128,32 @@ const AnimeState = ({ children }) => {
     setIsFinished(false);
     
     try {
-      const response = await Promise.all([
-        fetch("https://api.jikan.moe/v3/top/anime/1/airing"),
-        fetch("https://api.jikan.moe/v3/top/anime/1/upcoming"),
-        fetch("https://api.jikan.moe/v3/top/anime/1/tv"),
-        fetch("https://api.jikan.moe/v3/top/anime/1/movie"),
-        fetch("https://api.jikan.moe/v3/top/anime/1/ova"),
-        fetch("https://api.jikan.moe/v3/top/anime/1/special")
+      const res1 = await fetch("https://api.jikan.moe/v3/top/anime/1/airing");
+      const res2 = await fetch("https://api.jikan.moe/v3/top/anime/1/upcoming");
+      const res3 = await fetch("https://api.jikan.moe/v3/top/anime/1/tv");
+      const res4 = await fetch("https://api.jikan.moe/v3/top/anime/1/movie");
+      const res5 = await fetch("https://api.jikan.moe/v3/top/anime/1/ova");
+      const res6 = await fetch("https://api.jikan.moe/v3/top/anime/1/special");
+
+      const data = await Promise.all([
+        res1.json(),
+        res2.json(),
+        res3.json(),
+        res4.json(),
+        res5.json(),
+        res6.json()
       ]);
-
-
-      const data = await Promise.all(response.map(r => r.json()));
       
       dispatch({
         type: GET_TOP_ANIMES_GENERAL,
         payload: data
       });
-
-      setIsFinished(true);
       
     } catch (error) {
       console.log(error);
     }
+
+    setIsFinished(true);
   }
 
   const cleanTopAnimesGeneral = () => {
@@ -167,11 +174,12 @@ const AnimeState = ({ children }) => {
         payload: data.top
       });
 
-      setIsFinished(true);
-
+      
     } catch (error) {
       console.log(error);
     }
+    
+    setIsFinished(true);
   }
 
   const cleanTopAnimes = () => {

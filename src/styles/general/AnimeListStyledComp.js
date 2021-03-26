@@ -3,8 +3,16 @@ import { Container } from '../../globalStyle';
 
 export const StyledAnimeList = styled(Container)`
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  
   grid-gap: 25px;
+
+  @media screen and (min-width: 1200px) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  @media screen and (min-width: 1920px) {
+    grid-template-columns: repeat(6, 1fr);
+  }
 `;
 
 export const Text = styled.p`
