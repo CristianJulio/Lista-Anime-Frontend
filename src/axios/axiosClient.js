@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: "https://animelistbackend.herokuapp.com/api",
-  // baseURL: process.env.REACT_APP_BACKEND_URL
+  // baseURL: "https://animelistbackend.herokuapp.com/api",
+  baseURL: process.env.REACT_APP_BACKEND_URL
 });
 
 export const setToken = (token) => {

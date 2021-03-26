@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Enlace } from '../../globalStyle';
 
 export const MenuImg = styled.img`
   width: 40px;
@@ -48,4 +49,8 @@ export const MenuContainer = styled.div`
       display: block;
     }
   }
+`;
+
+export const MenuEnlace = styled(Enlace)`
+  color: rgb(92,114,138);
 `;

@@ -14,6 +14,7 @@ import Login from "./components/auth/Login";
 import PrivateRoute from "./components/private/PrivateRoute";
 import Signup from "./components/auth/Signup";
 import Profile from "./components/profile/Profile";
+import Settings from "./components/settings/Settings";
 
 function App() {
   return (
@@ -43,6 +44,9 @@ function App() {
                 </PrivateRoute>
                 <PrivateRoute path="/profile/:username">
                   <Profile />
+                </PrivateRoute>
+                <PrivateRoute path="/user/settings">
+                  <Settings />
                 </PrivateRoute>
                 <Route path="/signin" component={Login} />
                 <Route path="/signup" component={Signup} />

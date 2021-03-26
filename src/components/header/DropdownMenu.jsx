@@ -4,7 +4,8 @@ import {
   MenuImg,
   SubMenu,
   ItemSubMenu,
-  ItemName
+  ItemName,
+  MenuEnlace
 } from "../../styles/header/dropdownMenu.styles";
 import authContext from "../../context/auth/authContext";
 import { IoMdExit } from "react-icons/io";
@@ -30,7 +31,7 @@ const DropdownMenu = () => {
         <ItemSubMenu 
           pad="15px 70px 15px 25px"
         >
-          <AiOutlineSetting /> <ItemName>Settings</ItemName>
+          <AiOutlineSetting /> <ItemName><MenuEnlace to="/user/settings">Settings</MenuEnlace></ItemName>
         </ItemSubMenu>
         <ItemSubMenu
           onClick={signOut}
