@@ -6,6 +6,8 @@ import {
   InputGroup,
   SaveButton,
 } from "../../styles/settings/account.styles";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Security = () => {
   const [editing, setEditing] = useState(false);
@@ -27,12 +29,21 @@ const Security = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (editing === false) {
-      setEditing(true);
-    } else {
-      setEditing(false);
-      console.log(data);
+    if (
+      (editing !== false && old_password === "") ||
+      password === "" ||
+      confirm_password === ""
+    ) {
+      return toast.warn("All fields are required required", {
+        hideProgressBar: true,
+      });
     }
+
+    if (password !== confirm_password)
+      return toast.warning("Passwords do not match", { hideProgressBar: true });
+
+    if (editing === false) setEditing(true);
+    else setEditing(false);
   };
 
   return (
@@ -70,7 +81,10 @@ const Security = () => {
         />
       </GroupContainer>
 
-      <SaveButton>{editing ? "Save" : "Edit"}</SaveButton>
+      <SaveButton onClick={handleSubmit}>
+        {editing ? "Save" : "Edit"}
+      </SaveButton>
+      <ToastContainer position="top-left" />
     </ContentContainer>
   );
 };

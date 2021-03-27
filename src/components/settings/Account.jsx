@@ -7,6 +7,8 @@ import {
   SaveButton,
 } from "../../styles/settings/account.styles";
 import authContext from '../../context/auth/authContext';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Account = () => {
   const { user } = useContext(authContext);
@@ -30,17 +32,17 @@ const Account = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (editing === false) {
+    if(editing !== false && old_password === "") return toast.warn("Old password is required", { hideProgressBar: true });
+
+    if (editing === false)
       setEditing(true);
-    } else {
+    else
       setEditing(false);
-      console.log(data);
-    }
   };
 
   return (
     <>
-      <ContentContainer onSubmit={handleSubmit}>
+      <ContentContainer>
         <GroupContainer>
           <LabelGroup>Update Username</LabelGroup>
           <InputGroup
@@ -74,7 +76,8 @@ const Account = () => {
           />
         </GroupContainer>
 
-        <SaveButton>{editing ? "Save" : "Edit"}</SaveButton>
+        <SaveButton onClick={handleSubmit}>{editing ? "Save" : "Edit"}</SaveButton>
+        <ToastContainer position="top-left" />
       </ContentContainer>
     </>
   );
