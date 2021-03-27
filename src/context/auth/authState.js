@@ -1,7 +1,7 @@
 import { useReducer } from 'react';
 import AuthContext from './authContext';
 import authReducer from './authReducer';
-import instance from '../../axios/axiosClient';
+import instance, { setToken } from '../../axios/axiosClient';
 import { SIGN_IN, SIGN_OUT, ERROR_SIGN_IN, SET_MESSAGE, CLEAN_MESSAGE, SET_CURRENT_USER, SET_CURRENT_USER_ERROR, SIGNUP_ERROR, SIGN_UP } from '../../types';
 
 const AuthState = ({ children }) => {
@@ -59,6 +59,10 @@ const AuthState = ({ children }) => {
   }
 
   const getCurrentUser = async () => {
+    const token = localStorage.getItem('token');
+
+    if(token) setToken(token);
+    
     try {
       const response = await instance("/auth");
       

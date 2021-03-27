@@ -1,26 +1,44 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   ContentContainer,
   GroupContainer,
+  TitleContent,
   LabelGroup,
   InputGroup,
   SaveButton,
 } from "../../styles/settings/account.styles";
-import authContext from '../../context/auth/authContext';
+import authContext from "../../context/auth/authContext";
+import usersContext from "../../context/users/usersContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Account = () => {
-  const { user } = useContext(authContext);
-  
-  const [editing, setEditing] = useState(false);
+  const { user, signOut } = useContext(authContext);
+  const { mensajeUser, updateUser } = useContext(usersContext);
+
   const [data, setData] = useState({
-    username: user.username ? user.username : "",
-    email: user.email,
+    username: "",
+    email: "",
+    password: "",
+    confirm_password: "",
     old_password: "",
   });
 
-  const { username, email, old_password } = data;
+  useEffect(() => {
+    const msg = mensajeUser.msg;
+    const type = mensajeUser.type;
+
+    if (type === "error")
+      toast.error(msg, { hideProgressBar: true });
+    else if(type === "success") {
+      toast.success(msg, { hideProgressBar: true });
+      alert("You need to Sign in again");
+      signOut();
+    }
+  // eslint-disable-next-line
+  }, [mensajeUser]);
+
+  const { username, email, password, confirm_password, old_password } = data;
 
   const handleChange = (e) => {
     setData({
@@ -32,12 +50,10 @@ const Account = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if(editing !== false && old_password === "") return toast.warn("Old password is required", { hideProgressBar: true });
+    if (old_password === "")
+      return toast.warn("Old password is required", { hideProgressBar: true });
 
-    if (editing === false)
-      setEditing(true);
-    else
-      setEditing(false);
+    updateUser(data, user.id);
   };
 
   return (
@@ -50,7 +66,7 @@ const Account = () => {
             name="username"
             value={username}
             onChange={handleChange}
-            disabled={editing === false}
+            placeholder={user.username}
           />
         </GroupContainer>
 
@@ -61,22 +77,45 @@ const Account = () => {
             name="email"
             value={email}
             onChange={handleChange}
-            disabled={editing === false}
+            placeholder={user.email}
           />
         </GroupContainer>
+
+        <TitleContent>Password</TitleContent>
 
         <GroupContainer>
-          <LabelGroup>Old Password</LabelGroup>
-          <InputGroup
-            type="password"
-            name="old_password"
-            value={old_password}
-            onChange={handleChange}
-            disabled={editing === false}
-          />
-        </GroupContainer>
+        <LabelGroup>Update Password</LabelGroup>
+        <InputGroup
+          type="password"
+          name="password"
+          value={password}
+          onChange={handleChange}
+        />
+      </GroupContainer>
 
-        <SaveButton onClick={handleSubmit}>{editing ? "Save" : "Edit"}</SaveButton>
+      <GroupContainer>
+        <LabelGroup>Confirm new Password</LabelGroup>
+        <InputGroup
+          type="password"
+          name="confirm_password"
+          value={confirm_password}
+          onChange={handleChange}
+        />
+      </GroupContainer>
+
+      <TitleContent>Confirm old password</TitleContent>
+
+      <GroupContainer>
+        <LabelGroup>Old Password</LabelGroup>
+        <InputGroup
+          type="password"
+          name="old_password"
+          value={old_password}
+          onChange={handleChange}
+        />
+      </GroupContainer>
+
+        <SaveButton onClick={handleSubmit}>Save</SaveButton>
         <ToastContainer position="top-left" />
       </ContentContainer>
     </>

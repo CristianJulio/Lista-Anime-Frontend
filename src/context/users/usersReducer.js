@@ -1,26 +1,42 @@
-import { GET_USER_ANIME_LIST, CLEAN_USER_ANIME_LIST, SET_IS_FINISHED } from '../../types';
+import {
+  GET_USER_ANIME_LIST,
+  CLEAN_USER_ANIME_LIST,
+  SET_IS_FINISHED,
+  SET_MESSAGE,
+  CLEAN_MESSAGE,
+} from "../../types";
 
 // eslint-disable-next-line
 export default (state, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case GET_USER_ANIME_LIST:
       return {
         ...state,
         userAnimeList: action.payload.animeList,
-        userInfo: action.payload.userInfo
-      }
+        userInfo: action.payload.userInfo,
+      };
     case CLEAN_USER_ANIME_LIST:
       return {
         ...state,
         userAnimeList: {},
-        userInfo: {}
-      }
+        userInfo: {},
+      };
     case SET_IS_FINISHED:
       return {
         ...state,
-        isFinished: action.payload
-      }
+        isFinished: action.payload,
+      };
+    case SET_MESSAGE:
+      return {
+        ...state,
+        mensaje: action.payload,
+      };
+    case CLEAN_MESSAGE:
+      return {
+        ...state,
+        mensaje: {},
+      };
     default:
       return state;
   }
-}
+};

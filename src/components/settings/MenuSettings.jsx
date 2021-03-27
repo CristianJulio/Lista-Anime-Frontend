@@ -8,7 +8,6 @@ const MenuSettings = ({ setState, data }) => {
   return (
     <MenuContainer>
       <MenuItem onClick={() => setState(data.account)}>Account</MenuItem>
-      <MenuItem onClick={() => setState(data.security)}>Security</MenuItem>
     </MenuContainer>
   );
 };

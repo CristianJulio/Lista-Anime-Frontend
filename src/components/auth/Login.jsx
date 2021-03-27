@@ -11,6 +11,7 @@ import {
   EnlaceLogin
 } from "../../styles/auth/Auth.styles";
 import Header from "../header/Header";
+import UserContext from "../../context/users/usersContext";
 
 const Login = ({ history }) => {
   const [credentials, setCredentials] = useState({
@@ -21,12 +22,16 @@ const Login = ({ history }) => {
   const { username, password } = credentials;
 
   const { mensaje, auth } = useContext(authContext);
+  const { mensajeUser } = useContext(UserContext);
 
   const token = localStorage.getItem("token");
 
   useEffect(() => {
     if (mensaje.type === "error")
       toast.error(mensaje.msg, { hideProgressBar: true });
+    if(mensajeUser.type === "success") {
+      toast.success(mensajeUser.msg, { hideProgressBar: true });
+    }
 
     if (token) history.push("/");
   }, [mensaje, history, token]);

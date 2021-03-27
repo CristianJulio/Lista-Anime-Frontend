@@ -9,12 +9,11 @@ import {
 } from "../../styles/settings/settings.styles";
 import MenuSettings from "./MenuSettings";
 import Account from "./Account";
-import Security from "./Security";
 
 const Settings = () => {
-  const ACCOUNT = "account";
-  const SECURITY = "security";
-
+  const ACCOUNT = "Account";
+  const PROFILE = 'Profile';
+  
   const [state, setState] = useState(ACCOUNT);
 
   return (
@@ -24,18 +23,16 @@ const Settings = () => {
         <TitleContainer>
           <TitleSettings>Settings</TitleSettings>
           <TitleSettings>
-            {state === ACCOUNT ? "Account" : "Security"}
+            {state === ACCOUNT ? "Account" : "Profile"}
           </TitleSettings>
         </TitleContainer>
         <ContentContainer>
           <MenuSettings
             setState={setState}
-            data={{ account: ACCOUNT, security: SECURITY }}
+            data={{ account: ACCOUNT, security: PROFILE }}
           />
           <MainContent>
             {state === ACCOUNT ? <Account /> : null}
-
-            {state === SECURITY ? <Security /> : null}
           </MainContent>
         </ContentContainer>
       </SettingsContainer>
