@@ -8,6 +8,7 @@ const MenuSettings = ({ setState, data }) => {
   return (
     <MenuContainer>
       <MenuItem onClick={() => setState(data.account)}>Account</MenuItem>
+      <MenuItem onClick={() => setState(data.profile)}>Profile</MenuItem>
     </MenuContainer>
   );
 };

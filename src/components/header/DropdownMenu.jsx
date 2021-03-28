@@ -5,7 +5,7 @@ import {
   SubMenu,
   ItemSubMenu,
   ItemName,
-  MenuEnlace
+  MenuEnlace,
 } from "../../styles/header/dropdownMenu.styles";
 import authContext from "../../context/auth/authContext";
 import { IoMdExit } from "react-icons/io";
@@ -13,25 +13,23 @@ import { AiOutlineSetting } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
 
 const DropdownMenu = () => {
-  const { signOut } = useContext(authContext);
+  const { signOut, user } = useContext(authContext);
+  const avatarUrl = user.img_url
+    ? user.img_url
+    : "https://i.pinimg.com/originals/79/ce/fb/79cefb2ef603381d8b80837eac5f2474.jpg";
 
   return (
     <MenuContainer>
-      <MenuImg
-        src="https://i.pinimg.com/originals/79/ce/fb/79cefb2ef603381d8b80837eac5f2474.jpg"
-        alt=""
-      />
+      <MenuImg src={avatarUrl} alt="" />
       <SubMenu>
-        <ItemSubMenu 
-          borRad="4px 4px 0 0"
-          pad="25px 70px 0 25px"
-        >
+        <ItemSubMenu borRad="4px 4px 0 0" pad="25px 70px 0 25px">
           <CgProfile /> <ItemName>Profile</ItemName>
         </ItemSubMenu>
-        <ItemSubMenu 
-          pad="15px 70px 15px 25px"
-        >
-          <AiOutlineSetting /> <ItemName><MenuEnlace to="/user/settings">Settings</MenuEnlace></ItemName>
+        <ItemSubMenu pad="15px 70px 15px 25px">
+          <AiOutlineSetting />{" "}
+          <ItemName>
+            <MenuEnlace to="/user/settings">Settings</MenuEnlace>
+          </ItemName>
         </ItemSubMenu>
         <ItemSubMenu
           onClick={signOut}

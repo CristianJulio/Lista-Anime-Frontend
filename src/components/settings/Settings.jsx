@@ -8,7 +8,8 @@ import {
   MainContent,
 } from "../../styles/settings/settings.styles";
 import MenuSettings from "./MenuSettings";
-import Account from "./Account";
+import AccountSettings from "./AccountSettings";
+import ProfileSettings from "./ProfileSettings";
 
 const Settings = () => {
   const ACCOUNT = "Account";
@@ -23,16 +24,17 @@ const Settings = () => {
         <TitleContainer>
           <TitleSettings>Settings</TitleSettings>
           <TitleSettings>
-            {state === ACCOUNT ? "Account" : "Profile"}
+            {state}
           </TitleSettings>
         </TitleContainer>
         <ContentContainer>
           <MenuSettings
             setState={setState}
-            data={{ account: ACCOUNT, security: PROFILE }}
+            data={{ account: ACCOUNT, profile: PROFILE }}
           />
           <MainContent>
-            {state === ACCOUNT ? <Account /> : null}
+            {state === ACCOUNT ? <AccountSettings /> : null}
+            {state === PROFILE ? <ProfileSettings /> : null}
           </MainContent>
         </ContentContainer>
       </SettingsContainer>
