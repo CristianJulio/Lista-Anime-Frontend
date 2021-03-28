@@ -10,7 +10,7 @@ import {
   ListImg,
   ListTitle,
   ListContet
-} from "../../styles/profile/profile.styles";
+} from '../../styles/animeList/listSection.styles';
 
 const ListSection = ({ title, animeList }) => {
 

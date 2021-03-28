@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from "react";
-import Header from "../header/Header";
 import BrowserFilter from "./BrowserFilter";
 import AnimeList from "../general/AnimeList";
 import Pagination from "../general/Pagination";

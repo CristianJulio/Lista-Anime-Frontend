@@ -8,7 +8,8 @@ const Navbar = () => {
   return (
     <NavContainer>
         <NavItem to="/">Home</NavItem>
-        <NavItem to={`/profile/${user.username}`}>Anime List</NavItem>
+        <NavItem to={`/profile/${user.username}`}>Profile</NavItem>
+        <NavItem to={`/list/${user.username}`}>Anime List</NavItem>
         <NavItem to="/browse/1">Browse</NavItem>
       </NavContainer>
   );

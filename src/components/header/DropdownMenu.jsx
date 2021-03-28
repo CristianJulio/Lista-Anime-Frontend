@@ -23,8 +23,12 @@ const DropdownMenu = () => {
       <MenuImg src={avatarUrl} alt="" />
       <SubMenu>
         <ItemSubMenu borRad="4px 4px 0 0" pad="25px 70px 0 25px">
-          <CgProfile /> <ItemName>Profile</ItemName>
+          <CgProfile />
+          <ItemName>
+            <MenuEnlace to={`/profile/${user.username}`}>Profile</MenuEnlace>
+          </ItemName>
         </ItemSubMenu>
+
         <ItemSubMenu pad="15px 70px 15px 25px">
           <AiOutlineSetting />{" "}
           <ItemName>
