@@ -30,7 +30,7 @@ const ListSection = ({ title, animeList }) => {
           {animeList.map((item) => (
             
               <ListItem key={item.animeId}>
-                <ListLink to={`/anime/${item.mal_id}/${item.title}`}>
+                <ListLink to={`/anime/${item.mal_id}/${item.title.replace("%", "")}`}>
                   <ListImg src={item.image_url} />
                   <ListTitle>{item.title}</ListTitle>
                 </ListLink>

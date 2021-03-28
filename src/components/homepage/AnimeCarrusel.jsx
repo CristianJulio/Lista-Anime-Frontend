@@ -16,7 +16,7 @@ const AnimeCarrusel = ({ titulo, animes, enlace }) => {
   }, [])
   
   let lista = [];
-  let limite = isbigscreen ? 6 : 5;
+  let limite = isbigscreen ? 4 : 3;
 
   for(let i = 0; i < limite; i++) {
     lista.push(animes[i]);

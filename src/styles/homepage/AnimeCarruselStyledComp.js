@@ -10,6 +10,14 @@ export const TextContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 25px;
+
+  @media screen and (min-width: 1200px) {
+    width: 60%;
+  }
+
+  @media screen and (min-width: 1920px) {
+    width: 66.5%;
+  }
 `;
 
 export const TitleCarrusel = styled(middleTitle)`
