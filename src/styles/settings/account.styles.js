@@ -45,3 +45,16 @@ export const SaveButton = styled.button`
   color: #FFF;
   cursor: pointer;
 `;
+
+export const AvatarChangeContainer = styled.div`
+  display: grid;
+  grid-gap: 25px;
+  grid-template-columns: 85% 15%;
+`;
+
+export const AvatarPreview = styled.img`
+  width: 100px;
+  height: 100px;
+  border-radius: 4px;
+  object-fit: cover;
+`;

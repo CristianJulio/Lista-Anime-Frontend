@@ -12,7 +12,7 @@ import usersContext from "../../context/users/usersContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const Account = () => {
+const AccountSettings = () => {
   const { user, signOut } = useContext(authContext);
   const { mensajeUser, updateUser } = useContext(usersContext);
 
@@ -49,6 +49,9 @@ const Account = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if(username === "" && email === "")
+      return toast.warn("Nothing to update", { hideProgressBar: true });
 
     if (old_password === "")
       return toast.warn("Old password is required", { hideProgressBar: true });
@@ -122,4 +125,4 @@ const Account = () => {
   );
 };
 
-export default Account;
+export default AccountSettings;

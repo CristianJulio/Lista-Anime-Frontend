@@ -34,6 +34,7 @@ const Login = ({ history }) => {
     }
 
     if (token) history.push("/");
+  // eslint-disable-next-line
   }, [mensaje, history, token]);
 
   const handleChange = (e) => {

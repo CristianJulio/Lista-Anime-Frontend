@@ -6,6 +6,7 @@ export const MenuImg = styled.img`
   height: 40px;
   border-radius: 4px;
   cursor: pointer;
+  object-fit: cover;
 `;
 
 export const SubMenu = styled.ul`
