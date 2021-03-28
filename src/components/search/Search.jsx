@@ -23,8 +23,8 @@ const Search = () => {
           Search animes ({state === BROWSE ? "Browse" : "Seasonal"})
         </TitleSearch>
         <ButtonContainer>
-          <ButtonSearch onClick={() => setState(BROWSE)}>Browser</ButtonSearch>
-          <ButtonSearch onClick={() => setState(SEASON)}>Seasonal</ButtonSearch>
+          <ButtonSearch active={state === BROWSE} onClick={() => setState(BROWSE)}>Browser</ButtonSearch>
+          <ButtonSearch active={state === SEASON} onClick={() => setState(SEASON)}>Seasonal</ButtonSearch>
         </ButtonContainer>
 
         {state === BROWSE ? <Browser /> : null}

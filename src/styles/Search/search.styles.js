@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Container, middleTitle } from '../../globalStyle';
 
 export const SearchContainer = styled(Container)`
@@ -20,5 +20,10 @@ export const ButtonSearch = styled.button`
   background: #2b2d42;
   color: #FFF;
   margin-right: 10px;
-  cursor: pointer;
+  /* border-bottom: 3px solid #FFF; */
+
+  cursor: pointer; 
+  ${({active}) => active && css`
+    border-bottom: 2px solid #72c178;
+  `}  
 `;
