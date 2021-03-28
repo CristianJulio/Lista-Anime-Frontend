@@ -87,3 +87,7 @@ export const CleanButton = styled.button`
   font-size: 12pt;
   color: rgb(92,114,138);
 `;
+
+export const EmptyMessage = styled(middleTitle)`
+  text-align: center;
+`;

@@ -3,6 +3,9 @@ import { middleTitle, NormalTitle } from '../../globalStyle';
 
 export const ContentContainer = styled.div`
   margin-bottom: 25px;
+  background: #FFF;
+  padding: 20px;
+  border-radius: 4px;
 `;
 
 export const GroupContainer = styled.div`
@@ -12,6 +15,8 @@ export const GroupContainer = styled.div`
 
 export const TitleContent = styled(middleTitle)`
   margin: 25px 0;
+  border-top: 1px solid #c0c4cc;
+  padding-top: 25px;
 `;
 
 export const LabelGroup = styled(NormalTitle)`
@@ -19,10 +24,14 @@ export const LabelGroup = styled(NormalTitle)`
 `;
 
 export const InputGroup = styled.input`
-  width: 300px; 
-  padding: 8px 15px;
-  border-radius: 4px;
+  width: 100%;
+  background: rgba(237,241,245, .6);
+  color: rgb(92,114,138);
   border: none;
+  padding: 0 15px;
+  height: 40px;
+  font-size: 11pt;
+  border-radius: 4px;
   outline: none;
   box-shadow: 2px 0px 3px rgba(0, 0, 0, .1);
 `;

@@ -8,6 +8,7 @@ import {
   InputFilter,
   InputContainer,
   CleanButton,
+  EmptyMessage
 } from "../../styles/profile/profile.styles";
 import ListSection from "./ListSection";
 import { AiFillCloseCircle } from "react-icons/ai";
@@ -73,11 +74,22 @@ const Profile = () => {
     });
   };
 
+  let empty = true;
+
+  for(let item in userAnimeList) {
+    if(userAnimeList[item].length !== 0) {
+      empty = false;
+    }
+  }
+
   return (
     <>
       <Header />
       <>
-        <ProfileContainer>
+        {empty && isFinished ? (
+          <EmptyMessage>Nothing to show yet...</EmptyMessage>
+        ) : (
+          <ProfileContainer>
           {isFinished ? (
             <>
               <InputContainer>
@@ -146,6 +158,7 @@ const Profile = () => {
             <Spinner />
           )}
         </ProfileContainer>
+        )}
       </>
     </>
   );

@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const MenuContainer = styled.ul`
   width: 20%;
   list-style: none;
-  box-shadow: 3px 3px 3px rgba(0, 0, 0, .2);
 `;
 
 export const MenuItem = styled.li`
