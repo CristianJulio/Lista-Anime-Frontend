@@ -27,7 +27,7 @@ const Current = ({ userAnimeList }) => {
                         .replace("%", "")}`}
                     >
                       <InfoImg key={item.title} src={item.image_url} alt="" />
-                      <InfoProgress>{`${item.progress}/${item.episodes}`}</InfoProgress>
+                      <InfoProgress>{`${item.progress}/${item.episodes ? item.episodes : ""}`}</InfoProgress>
                     </EnlaceInfo>
                   );
                 })}
