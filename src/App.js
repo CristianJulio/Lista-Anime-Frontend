@@ -15,6 +15,7 @@ import PrivateRoute from "./components/private/PrivateRoute";
 import Signup from "./components/auth/Signup";
 import Profile from "./components/profile/Profile";
 import Settings from "./components/settings/Settings";
+import Search from "./components/search/Search";
 
 function App() {
   return (
@@ -27,9 +28,6 @@ function App() {
                 <PrivateRoute exact path="/">
                   <HomePage />
                 </PrivateRoute>
-                <PrivateRoute path="/browse/:page">
-                  <Browser />
-                </PrivateRoute>
                 <PrivateRoute path="/search/:nombreAnime/:page">
                   <ResultadosBusqueda />
                 </PrivateRoute>
@@ -39,14 +37,14 @@ function App() {
                 <PrivateRoute path="/top/:type">
                   <TopAnimes />
                 </PrivateRoute>
-                <PrivateRoute path="/seasonal">
-                  <Temporadas />
-                </PrivateRoute>
                 <PrivateRoute path="/profile/:username">
                   <Profile />
                 </PrivateRoute>
                 <PrivateRoute path="/user/settings">
                   <Settings />
+                </PrivateRoute>
+                <PrivateRoute path="/browse/:page">
+                  <Search />
                 </PrivateRoute>
                 <Route path="/signin" component={Login} />
                 <Route path="/signup" component={Signup} />

@@ -18,11 +18,11 @@ const Pagination = ({ baseUrl }) => {
   const history = useHistory();
 
   const previousPage = () => {
-    history.push(`${baseUrl}/${Number(page) - 1}`);
+    history.push(`${baseUrl}${Number(page) - 1}`);
   };
 
   const nextPage = () => {
-    history.push(`${baseUrl}/${Number(page) + 1}`);
+    history.push(`${baseUrl}${Number(page) + 1}`);
   };
 
   return (

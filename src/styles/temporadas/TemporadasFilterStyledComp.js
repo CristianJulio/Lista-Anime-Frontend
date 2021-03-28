@@ -4,7 +4,7 @@ export const StyledAnimeFilter = styled.form`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 50px;
+  margin-bottom: 25px;
 `;
 
 export const SelectFilter = styled.select`

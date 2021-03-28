@@ -46,7 +46,7 @@ const BrowserFilter = () => {
 
   return (
     <StyledBrowserFilter onSubmit={handleSubmit}>
-      <InputBrowser type="text" name="q" onChange={handleChange} value={q} placeholder="Naruto..." />
+      <InputBrowser type="text" name="q" onChange={handleChange} value={q} placeholder="No game no..." />
       
       <SelectBrowser boxShaCol={error ? "#d65245" : "rgba(0,0,0,.1))"} name="type" value={type} onChange={handleChange}>
         <option value="">Type</option>

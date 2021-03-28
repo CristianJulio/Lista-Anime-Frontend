@@ -9,7 +9,6 @@ const Navbar = () => {
     <NavContainer>
         <NavItem to="/">Home</NavItem>
         <NavItem to={`/profile/${user.username}`}>Anime List</NavItem>
-        <NavItem to="/seasonal">Seasonal</NavItem>
         <NavItem to="/browse/1">Browse</NavItem>
       </NavContainer>
   );
