@@ -42,7 +42,7 @@ const ProfileSettings = () => {
 
   const { img_url, old_password } = data;
 
-  const handleChange = (e) => {
+  const handleChange = (e) => {   
     setData({
       ...data,
       [e.target.name]: e.target.value,
@@ -51,6 +51,7 @@ const ProfileSettings = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if(img_url.length > 240) return toast.warn("Url is too long", { hideProgressBar: true });
 
     if (old_password === "")
       return toast.warn("Old password is required", { hideProgressBar: true });

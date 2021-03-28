@@ -11,11 +11,11 @@ import {
 import authContext from "../../context/auth/authContext";
 import DropdownMenu from "./DropdownMenu";
 
-const Header = () => {
+const Header = ({ opacity }) => {
   const { isAuthenticated } = useContext(authContext);
 
   return (
-    <StyledHeader>
+    <StyledHeader opacity={opacity}>
       <HeaderContainer>
         <Title>
           <HeaderEnlace to="/">AnimeList</HeaderEnlace>
