@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { Container, Enlace } from '../../globalStyle';
 
 export const StyledHeader = styled.header`
@@ -6,14 +6,11 @@ export const StyledHeader = styled.header`
   padding: 15px 30px;
   margin-bottom: 50px;
   transition: all .2s;
-  
-  ${({opacity}) => opacity && css`
-    opacity: .5;
+  opacity: ${({opacity}) => opacity ? opacity : ""};
 
-    &:hover {
-        opacity: .9;
-    }
-  `}
+  &:hover {
+    opacity: ${({opacity}) => opacity ? "0.9" : ""};
+  }
 `;
 
 export const HeaderContainer = styled(Container)`

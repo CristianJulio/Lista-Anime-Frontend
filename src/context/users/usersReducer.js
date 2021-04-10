@@ -20,7 +20,7 @@ export default (state, action) => {
       return {
         ...state,
         userAnimeList: {},
-        userInfo: {},
+        userInfo: {}
       };
     case SET_IS_FINISHED:
       return {

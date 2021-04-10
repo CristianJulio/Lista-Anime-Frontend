@@ -17,6 +17,10 @@ export const ImgBanner = styled.img`
   height: 400px;
 `;
 
+export const TextContainer = styled.div`
+  padding: 20px;
+`;
+
 export const CabeceraProfile = styled.div`
   display: flex;
 `;
@@ -29,5 +33,5 @@ export const AvatarImg = styled.img`
 `;
 
 export const Username = styled(middleTitle)`
-  padding: 20px;
+  margin-bottom: 5px;
 `;

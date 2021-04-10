@@ -1,33 +1,52 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Header from "../header/Header";
+import Spinner from '../general/Spinner';
 import {
   ProfileContainer,
   BannerContainer,
   ImgBanner,
   AvatarImg,
   CabeceraProfile,
-  Username
+  Username,
+  TextContainer
 } from "../../styles/profile/profile.styles";
-import authContext from "../../context/auth/authContext";
+import userContext from "../../context/users/usersContext";
+import { useParams } from "react-router";
 
 const Profile = () => {
-  const { user } = useContext(authContext);
+  const { userInfo, getUserAnimeList, cleanUserAnimeList } = useContext(userContext);
+  const { username } = useParams();
+
+  useEffect(() => {
+    getUserAnimeList(username);
+
+    return (() => cleanUserAnimeList());
+    // eslint-disable-next-line
+  }, [username]);
+
+  const { banner_url, img_url, username: userN, about } = userInfo;
 
   return (
     <>
-      <Header opacity={true} />
-      <BannerContainer>
-        <ImgBanner
-          src="https://s4.anilist.co/file/anilistcdn/user/banner/n102388-mwsWnmLSjC8L.jpg"
-          alt="Banner"
-        />
-      </BannerContainer>
-      <ProfileContainer>
-        <CabeceraProfile>
-          <AvatarImg src={user.img_url} alt="Avatar" />
-          <Username>{user.username}</Username>
-        </CabeceraProfile>
-      </ProfileContainer>
+      {userInfo.banner_url ? (
+        <>
+          <Header opacity="0.5" />
+          <BannerContainer>
+            <ImgBanner src={banner_url} alt="Banner" />
+          </BannerContainer>
+          <ProfileContainer>
+            <CabeceraProfile>
+              <AvatarImg src={img_url} alt="Avatar" />
+              <TextContainer>
+                <Username>{userN}</Username>
+                <p>{about}</p>
+              </TextContainer>
+            </CabeceraProfile>
+          </ProfileContainer>
+        </>
+      ) : (
+        <Spinner />
+      )}
     </>
   );
 };
