@@ -20,6 +20,7 @@ const ProfileSettings = () => {
 
   const [data, setData] = useState({
     img_url: "",
+    banner_url: "",
     old_password: "",
   });
 
@@ -34,13 +35,13 @@ const ProfileSettings = () => {
       toast.success(msg, { hideProgressBar: true });
       clearTimeout(timer);
       timer = setTimeout(() => {
-        window.location.reload();
+        window.location.href = `${process.env.REACT_APP_FRONTEND_URL}profile/${user.username}`;
       }, 1000);
     }
     // eslint-disable-next-line
   }, [mensajeUser]);
 
-  const { img_url, old_password } = data;
+  const { img_url, banner_url, old_password } = data;
 
   const handleChange = (e) => {   
     setData({
@@ -51,7 +52,7 @@ const ProfileSettings = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(img_url.length > 240) return toast.warn("Url is too long", { hideProgressBar: true });
+    if(img_url.length > 240 || banner_url.length > 240) return toast.warn("Url is too long", { hideProgressBar: true });
 
     if (old_password === "")
       return toast.warn("Old password is required", { hideProgressBar: true });
@@ -78,6 +79,17 @@ const ProfileSettings = () => {
 
           <AvatarPreview src={avatarUrl} alt="Avatar preview" />
         </AvatarChangeContainer>
+
+        <GroupContainer>
+            <LabelGroup>Banner</LabelGroup>
+            <InputGroup
+              type="text"
+              name="banner_url"
+              value={banner_url}
+              onChange={handleChange}
+              placeholder="Banner Url..."
+            />
+          </GroupContainer>
 
         <TitleContent>Confirm old password</TitleContent>
 
