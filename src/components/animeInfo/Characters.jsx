@@ -8,7 +8,7 @@ import {
   ImgItem,
   TextContainerItem,
   TitleTexCon,
-  ContentTexCon
+  ContentTexCon,
 } from "../../styles/animeInfoStyles/CharactersStyledComp";
 
 const Characters = ({ data }) => {
@@ -31,9 +31,15 @@ const Characters = ({ data }) => {
               <InnerItemContainer JusCon="flex-end">
                 <TextContainerItem texAli="right">
                   <TitleTexCon>{d.item.voice_actors[0].name}</TitleTexCon>
-                  <ContentTexCon>{d.item.voice_actors[0].language}</ContentTexCon>
+                  <ContentTexCon>
+                    {d.item.voice_actors[0].language}
+                  </ContentTexCon>
                 </TextContainerItem>
-                <ImgItem src={d.item.voice_actors[0].image_url} alt="" borRad="0 4px 4px 0" />
+                <ImgItem
+                  src={d.item.voice_actors[0].image_url}
+                  alt=""
+                  borRad="0 4px 4px 0"
+                />
               </InnerItemContainer>
             ) : (
               <InnerItemContainer JusCon="flex-end">
@@ -41,9 +47,13 @@ const Characters = ({ data }) => {
                   <TitleTexCon>Unknown</TitleTexCon>
                   <ContentTexCon>Voice Actor</ContentTexCon>
                 </TextContainerItem>
-                <ImgItem src="https://cdn.myanimelist.net/r/42x62/images/questionmark_23.gif?s=f7dcbc4a4603d18356d3dfef8abd655c" alt="" borRad="0 4px 4px 0" />
+                <ImgItem
+                  src="https://cdn.myanimelist.net/r/42x62/images/questionmark_23.gif?s=f7dcbc4a4603d18356d3dfef8abd655c"
+                  alt=""
+                  borRad="0 4px 4px 0"
+                />
               </InnerItemContainer>
-            )}            
+            )}
           </ItemCharacter>
         ))}
       </ItemsContainer>

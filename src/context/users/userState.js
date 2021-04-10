@@ -16,7 +16,8 @@ const UserState = ({ children }) => {
     userInfo: {},
     isFinished: false,
     mensaje: {},
-    isSucces: false
+    isSucces: false,
+    watchingPrev: []
   };
 
   const [state, dispatch] = useReducer(userReducer, initialState);
@@ -92,6 +93,7 @@ const UserState = ({ children }) => {
         userInfo: state.userInfo,
         isFinished: state.isFinished,
         mensajeUser: state.mensaje,
+        watchingPrev: state.watchingPrev,
         getUserAnimeList,
         cleanUserAnimeList,
         setIsFinished,

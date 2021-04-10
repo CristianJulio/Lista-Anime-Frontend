@@ -14,6 +14,7 @@ export default (state, action) => {
         ...state,
         userAnimeList: action.payload.animeList,
         userInfo: action.payload.userInfo,
+        watchingPrev: action.payload.watchingPrev
       };
     case CLEAN_USER_ANIME_LIST:
       return {

@@ -21,7 +21,7 @@ const HomePage = () => {
   } = useContext(animeContext);
 
   const { user, mensaje } = useContext(authContext);
-  const { userAnimeList, getUserAnimeList } = useContext(usersContext);
+  const { userAnimeList, watchingPrev, getUserAnimeList } = useContext(usersContext);
 
   useEffect(() => {
     getTopAnimesGeneral();
@@ -76,7 +76,7 @@ const HomePage = () => {
             <ToastContainer position="top-left" />
           </AnimesContainer>
 
-          {userAnimeList ? <Current userAnimeList={userAnimeList} /> : null}
+          {userAnimeList ? <Current watchingPrev={watchingPrev} /> : null}
         </HomePageContainer>
       ) : (
         <Spinner />
