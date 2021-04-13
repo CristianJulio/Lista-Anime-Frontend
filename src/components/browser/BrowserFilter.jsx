@@ -52,7 +52,7 @@ const BrowserFilter = () => {
         <option value="">Type</option>
         <option value="tv">Tv</option>
         <option value="ova">Ova</option>
-        <option value="movie">Movie</option>
+        <option value="movie">Movies</option>
         <option value="special">Special</option>
       </SelectBrowser>
 
